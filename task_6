@@ -1,0 +1,17 @@
+#!/bin/bash
+processID=0
+max_ram=0
+for pid in $(ps	-e -o pid);
+do
+	status="/proc/$pid/status"
+	cur_ram=$(grep -s "VmSize" $status | grep -E -s -o "[0-9]+")
+	if [[ $cur_ram -gt $max_ram ]];
+	then
+	processID=$pid
+	max_ram=$cur_ram
+	fi
+done
+top_pid=$(top -b -o +VIRT | head -n 8 | tail -n 1 | awk '{print $1}')
+top_ram=$(top -b -o +VIRT | head -n 8 | tail -n 1 | awk '{print $5}')
+echo "MAX ram in /proc: pid:$processID ram:$max_ram"
+echo "MAX ram in   top: pid:$top_pid ram:$top_ram"

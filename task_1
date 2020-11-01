@@ -1,0 +1,11 @@
+#!/bin/bash
+ses=$(ps -u mileniummi -o user,pid,command)
+
+if [[ $ses == "" ]];
+then
+	echo "0" > ans_1
+else
+	echo "$ses" | tail -n +2 | wc -l > ans_1
+	echo "$ses" >> ans_1
+fi
+

@@ -1,0 +1,7 @@
+5
+USER       PID COMMAND
+mileniu+     7 -bash
+mileniu+    27 nano task_1
+mileniu+    34 nano ans_1
+mileniu+    78 /bin/bash ./task_1
+mileniu+    79 ps -u mileniummi -o user,pid,command
