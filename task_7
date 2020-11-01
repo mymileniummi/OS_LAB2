@@ -18,9 +18,9 @@ do
 	if [[ -n $new_read_bytes ]];
 	then
 	last_read_bytes=$(cat tmp | grep "^$pid:"| cut -d ":" -f 2)
-		if [[ -n read_bytes ]]
+		if [[ -n $read_bytes ]];
 		then
-			read_bytes=$(echo  "scale=7; $new_read_bytes-$last_read_bytes"| bc -l)
+			read_bytes=$(echo  "scale=7; $new_read_bytes-$last_read_bytes" | bc -l)
 			echo "$pid:$read_bytes"
 		fi
 	fi
