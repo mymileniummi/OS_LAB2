@@ -12,7 +12,7 @@ do
 	fi
 done
 
-sleep 5s
+sleep 1m
 
 for pid in $(ps -e -o pid);
 do
